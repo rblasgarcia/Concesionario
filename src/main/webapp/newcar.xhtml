@@ -63,10 +63,10 @@
 
 		<p:commandButton id="crear" value="Añadir" icon="ui-icon-disk"
 			validateClient="true" update="newCar"
-			actionListener="#{carController.insertCar}" action="availablecars" />
+			actionListener="#{carController.insertCar}" action="availablecars"/>
 
 		<p:commandButton id="back" value="Volver"
-			icon="ui-icon-arrowreturnthick-1-w" action="availablecars" />
+			icon="ui-icon-arrowreturnthick-1-w" action="availablecars" immediate="true"/>
 	</h:form>
 </body>
 </html>
