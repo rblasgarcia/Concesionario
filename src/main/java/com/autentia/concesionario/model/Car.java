@@ -59,7 +59,7 @@ public class Car {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
@@ -67,7 +67,7 @@ public class Car {
         return power;
     }
 
-    public void setPower(int power) {
+    public void setPower(Integer power) {
         this.power = power;
     }
 
@@ -83,7 +83,7 @@ public class Car {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -103,12 +103,10 @@ public class Car {
         }
         final Car other = (Car)o;
 
-        final boolean ret = new EqualsBuilder().append(this.id, other.getId()).append(this.brand, other.getBrand())
+        return new EqualsBuilder().append(this.id, other.getId()).append(this.brand, other.getBrand())
                 .append(this.model, other.getModel()).append(this.year, other.getYear())
                 .append(this.power, other.getPower()).append(this.colour, other.getColour())
                 .append(this.price, other.getPrice()).isEquals();
-
-        return ret;
     }
 
     @Override

@@ -49,12 +49,7 @@ public class CarControllerTest {
     }
 
     private void prepareCarControllerValues() {
-        carController.setBrand("Nisu");
-        carController.setModel("Puma");
-        carController.setYear(2015);
-        carController.setPower(250);
-        carController.setColour("Azul");
-        carController.setPrice(45000D);
+        carController.setCar(new Car("Nisu", "Puma", 2015, 250, "Azul", 45000));
     }
 
 }

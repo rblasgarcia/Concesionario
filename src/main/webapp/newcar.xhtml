@@ -15,34 +15,35 @@
 
 		<h:panelGrid columns="3" cellpadding="5">
 
-			<h:outputLabel for="brand" value="Marca" />
-			<p:inputText id="brand" value="#{carController.brand}"
+			<p:outputLabel for="brand" value="Marca" />
+			<p:inputText id="brand" value="#{carController.car.brand}"
 				required="true" requiredMessage="Campo requerido" label="Marca"
 				style="width: 50px" />
 			<p:message for="brand" />
 
-			<h:outputLabel for="model" value="Modelo" />
-			<p:inputText id="model" value="#{carController.model}"
+			<p:outputLabel for="model" value="Modelo" />
+			<p:inputText id="model" value="#{carController.car.model}"
 				required="true" requiredMessage="Campo requerido" label="Modelo"
 				style="width: 50px">
 			</p:inputText>
 			<p:message for="model" />
 
-			<h:outputLabel for="year" value="Año" />
-			<p:inputText id="year" value="#{carController.year}" required="true"
-				requiredMessage="Campo requerido" label="Año" style="width: 50px">
+			<p:outputLabel for="year" value="Año" />
+			<p:inputText id="year" value="#{carController.car.year}"
+				required="true" requiredMessage="Campo requerido" label="Año"
+				style="width: 50px">
 			</p:inputText>
 			<p:message for="year" />
 
 			<p:outputLabel for="power" value="Potencia (CV)" />
-			<p:inputText id="power" value="#{carController.power}"
+			<p:inputText id="power" value="#{carController.car.power}"
 				required="true" requiredMessage="Campo requerido" label="Potencia"
 				style="width: 50px">
 			</p:inputText>
 			<p:message for="power" />
 
-			<h:outputLabel for="colour" value="Color" />
-			<p:selectOneMenu id="colour" value="#{carController.colour}"
+			<p:outputLabel for="colour" value="Color" />
+			<p:selectOneMenu id="colour" value="#{carController.car.colour}"
 				required="true" requiredMessage="Campo requerido"
 				style="width:125px" label="Color">
 				<f:selectItem itemLabel="Color" itemValue="" />
@@ -52,8 +53,8 @@
 			</p:selectOneMenu>
 			<p:message for="colour" />
 
-			<h:outputLabel for="price" value="Precio (€)" />
-			<p:inputText id="price" value="#{carController.price}"
+			<p:outputLabel for="price" value="Precio (€)" />
+			<p:inputText id="price" value="#{carController.car.price}"
 				required="true" requiredMessage="Campo requerido" label="Precio"
 				style="width: 50px">
 			</p:inputText>
@@ -63,10 +64,11 @@
 
 		<p:commandButton id="crear" value="Añadir" icon="ui-icon-disk"
 			validateClient="true" update="newCar"
-			actionListener="#{carController.insertCar}" action="availablecars"/>
+			actionListener="#{carController.insertCar}" action="availablecars" />
 
 		<p:commandButton id="back" value="Volver"
-			icon="ui-icon-arrowreturnthick-1-w" action="availablecars" immediate="true"/>
+			icon="ui-icon-arrowreturnthick-1-w" action="availablecars"
+			immediate="true" />
 	</h:form>
 </body>
 </html>

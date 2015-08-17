@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,45 +21,23 @@ public class CarController {
 
     private static final Logger LOG = LoggerFactory.getLogger(CarController.class);
 
-    @ManagedProperty("#{carService}")
-    private CarService carService;
-
     @ManagedProperty("#{carColourService}")
     private CarColourService carColourService;
 
+    @ManagedProperty("#{carService}")
+    private CarService carService;
+
     private List<String> colourNameList = null;
 
-    private String brand;
-
-    private String model;
-
-    private Integer year;
-
-    private Integer power;
-
-    private String colour;
-
-    private Double price;
+    @Valid
+    private Car car;
 
     @PostConstruct
     public void init() {
         LOG.info("Inicializando formulario...");
         loadColourNames();
         LOG.info("Formulario inicializado.");
-    }
-
-    private void loadColourNames() {
-        LOG.info("Cargando lista de colores...");
-        colourNameList = carColourService.getAllCarColourNames();
-        LOG.info("Hecho.");
-    }
-
-    public CarService getCarService() {
-        return carService;
-    }
-
-    public void setCarService(CarService carService) {
-        this.carService = carService;
+        car = new Car();
     }
 
     public CarColourService getCarColourService() {
@@ -69,6 +48,14 @@ public class CarController {
         this.carColourService = carColourService;
     }
 
+    public CarService getCarService() {
+        return carService;
+    }
+
+    public void setCarService(CarService carService) {
+        this.carService = carService;
+    }
+
     public List<String> getColourNameList() {
         return colourNameList;
     }
@@ -77,59 +64,24 @@ public class CarController {
         this.colourNameList = colourNameList;
     }
 
-    public String getBrand() {
-        return brand;
+    public Car getCar() {
+        return car;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getPower() {
-        return power;
-    }
-
-    public void setPower(Integer power) {
-        this.power = power;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    private void loadColourNames() {
+        LOG.info("Cargando lista de colores...");
+        colourNameList = carColourService.getAllCarColourNames();
+        LOG.info("Hecho.");
     }
 
     public void insertCar() {
         // el coche ya viene validado por la propia página
         // por eso no se controlan excepciones
-        final Car carToInsert = new Car(brand, model, year, power, colour, price);
-        carService.insert(carToInsert);
+        carService.insert(car);
     }
 
 }

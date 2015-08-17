@@ -10,8 +10,7 @@ public class CarColour {
     private String colour;
 
     public CarColour() {
-
-    }
+    };
 
     public CarColour(String colour) {
         this.colour = colour;
@@ -35,7 +34,7 @@ public class CarColour {
 
     @Override
     public String toString() {
-        return "Color " + colour;
+        return "Color " + colour.toLowerCase();
     }
 
     @Override

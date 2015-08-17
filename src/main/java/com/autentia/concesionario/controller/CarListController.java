@@ -109,22 +109,28 @@ public class CarListController {
     public void onRowSelect(SelectEvent event) {
         putSelectedDataInContext(event);
 
-        LOG.info("Seleccionado coche: {}", selectedCar.toString());
+        if (selectedCar != null) {
+            LOG.info("Seleccionado coche: {}", selectedCar.toString());
+        }
 
         goToDetailPage();
     }
 
-    private void putSelectedDataInContext(SelectEvent event) {
+    protected void putSelectedDataInContext(SelectEvent event) {
         FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
     }
 
     private void goToDetailPage() {
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("cardetail.xhtml");
+            redirectToCarDetail();
             LOG.info("Vista de detalle cargada");
         } catch (final IOException e) {
             LOG.error("Fallo en navegación: {}", e);
         }
+    }
+
+    protected void redirectToCarDetail() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("cardetail.xhtml");
     }
 
 }
