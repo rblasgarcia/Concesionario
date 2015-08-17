@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<!-- Pagina de listado de datos: muestra al usuario los datos introducidos, tomandolos de una base de datos -->
+<h:head>
+	<title>Añadir Nuevo Coche</title>
+</h:head>
+<body>
+	<h:form id="newCar">
+
+		<h:panelGrid columns="3" cellpadding="5">
+
+			<h:outputLabel for="brand" value="Marca" />
+			<p:inputText id="brand" value="#{carController.brand}"
+				required="true" requiredMessage="Campo requerido" label="Marca"
+				style="width: 50px" />
+			<p:message for="brand" />
+
+			<h:outputLabel for="model" value="Modelo" />
+			<p:inputText id="model" value="#{carController.model}"
+				required="true" requiredMessage="Campo requerido" label="Modelo"
+				style="width: 50px">
+			</p:inputText>
+			<p:message for="model" />
+
+			<h:outputLabel for="year" value="Año" />
+			<p:inputText id="year" value="#{carController.year}" required="true"
+				requiredMessage="Campo requerido" label="Año" style="width: 50px">
+			</p:inputText>
+			<p:message for="year" />
+
+			<p:outputLabel for="power" value="Potencia (CV)" />
+			<p:inputText id="power" value="#{carController.power}"
+				required="true" requiredMessage="Campo requerido" label="Potencia"
+				style="width: 50px">
+			</p:inputText>
+			<p:message for="power" />
+
+			<h:outputLabel for="colour" value="Color" />
+			<p:selectOneMenu id="colour" value="#{carController.colour}"
+				required="true" requiredMessage="Campo requerido"
+				style="width:125px" label="Color">
+				<f:selectItem itemLabel="Color" itemValue="" />
+				<f:selectItems value="#{carController.colourNameList}"
+					var="colourName" itemLabel="#{colourName}"
+					itemValue="#{colourName}" />
+			</p:selectOneMenu>
+			<p:message for="colour" />
+
+			<h:outputLabel for="price" value="Precio (€)" />
+			<p:inputText id="price" value="#{carController.price}"
+				required="true" requiredMessage="Campo requerido" label="Precio"
+				style="width: 50px">
+			</p:inputText>
+			<p:message for="price" />
+
+		</h:panelGrid>
+
+		<p:commandButton id="crear" value="Añadir" icon="ui-icon-disk"
+			validateClient="true" update="newCar"
+			actionListener="#{carController.insertCar}" action="availablecars" />
+
+		<p:commandButton id="back" value="Volver"
+			icon="ui-icon-arrowreturnthick-1-w" action="availablecars" />
+	</h:form>
+</body>
+</html>

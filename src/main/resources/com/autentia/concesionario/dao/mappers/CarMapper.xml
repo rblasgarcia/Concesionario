@@ -12,7 +12,7 @@
 		insert into cars (brand, model, year, power, colour,
 		price) values
 		(#{brand},#{model},
-		#{year},#{power},#{colourName},#{price})
+		#{year},#{power},#{colour},#{price})
 
 	</insert>
 

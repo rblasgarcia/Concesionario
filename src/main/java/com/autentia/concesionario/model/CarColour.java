@@ -7,10 +7,14 @@ public class CarColour {
 
     private int id;
 
-    private String colourName;
+    private String colour;
 
-    public CarColour(String colourName) {
-        this.colourName = colourName;
+    public CarColour() {
+
+    }
+
+    public CarColour(String colour) {
+        this.colour = colour;
     }
 
     public void setId(int id) {
@@ -21,17 +25,17 @@ public class CarColour {
         return id;
     }
 
-    public String getColourName() {
-        return colourName;
+    public String getColour() {
+        return colour;
     }
 
-    public void setColourName(String colourName) {
-        this.colourName = colourName;
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
     @Override
     public String toString() {
-        return "Color " + colourName;
+        return "Color " + colour;
     }
 
     @Override
@@ -44,13 +48,13 @@ public class CarColour {
         }
 
         final CarColour other = (CarColour)o;
-        return new EqualsBuilder().append(this.colourName, other.getColourName()).isEquals();
+        return new EqualsBuilder().append(this.colour, other.getColour()).isEquals();
 
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(this.colourName).hashCode();
+        return new HashCodeBuilder().append(this.colour).hashCode();
     }
 
 }

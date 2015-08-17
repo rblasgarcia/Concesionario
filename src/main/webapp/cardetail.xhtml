@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<!-- Pagina de listado de datos: muestra al usuario los datos introducidos, tomandolos de una base de datos -->
+<h:head>
+	<title>Detalles de Coche</title>
+</h:head>
+<body>
+	<h:form id="carDetail">
+
+		<h:panelGrid columns="2" cellpadding="5">
+
+			<h:outputText value="Marca:" />
+			<h:outputText value="#{flash.selectedCar.brand}"
+				style="font-weight:bold" />
+
+			<h:outputText value="Modelo:" />
+			<h:outputText value="#{flash.selectedCar.model}"
+				style="font-weight:bold" />
+
+			<h:outputText value="Año:" />
+			<h:outputText value="#{flash.selectedCar.year}"
+				style="font-weight:bold" />
+
+			<h:outputText value="Potencia" />
+			<h:outputText value="#{flash.selectedCar.power} CV"
+				style="font-weight:bold" />
+
+			<h:outputText value="Color:" />
+			<h:outputText value="#{flash.selectedCar.colour}"
+				style="font-weight:bold" />
+
+			<h:outputText value="Precio:" />
+			<h:outputText value="#{flash.selectedCar.price} €"
+				style="font-weight:bold" />
+
+		</h:panelGrid>
+
+		<p:commandButton id="back" value="Volver"
+			icon="ui-icon-arrowreturnthick-1-w" action="availablecars" />
+	</h:form>
+</body>
+</html>

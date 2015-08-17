@@ -25,7 +25,7 @@
 
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.autentia.prueba17.mybatis.mappers" />
+		<property name="basePackage" value="com.autentia.concesionario.dao.mappers" />
 	</bean>
 
 

@@ -11,20 +11,23 @@ public class Car {
 
     private String model;
 
-    private int year;
+    private Integer year;
 
-    private int power;
+    private Integer power;
 
-    private String colourName;
+    private String colour;
 
-    private double price;
+    private Double price;
 
-    public Car(String brand, String model, int year, int power, String colourName, double price) {
+    public Car() {
+    };
+
+    public Car(String brand, String model, int year, int power, String colour, double price) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.power = power;
-        this.colourName = colourName;
+        this.colour = colour;
         this.price = price;
     }
 
@@ -52,7 +55,7 @@ public class Car {
         this.model = model;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
@@ -60,7 +63,7 @@ public class Car {
         this.year = year;
     }
 
-    public int getPower() {
+    public Integer getPower() {
         return power;
     }
 
@@ -68,15 +71,15 @@ public class Car {
         this.power = power;
     }
 
-    public String getColourName() {
-        return colourName;
+    public String getColour() {
+        return colour;
     }
 
-    public void setColourName(String colourName) {
-        this.colourName = colourName;
+    public void setColour(String colour) {
+        this.colour = colour;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -86,7 +89,8 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Color ";
+        return brand + " " + model + ", año " + year + ", " + power + "CV, color " + colour.toLowerCase() + ". Precio: "
+                + price + "€";
     }
 
     @Override
@@ -101,16 +105,15 @@ public class Car {
 
         final boolean ret = new EqualsBuilder().append(this.id, other.getId()).append(this.brand, other.getBrand())
                 .append(this.model, other.getModel()).append(this.year, other.getYear())
-                .append(this.power, other.getPower()).append(this.colourName, other.getColourName())
+                .append(this.power, other.getPower()).append(this.colour, other.getColour())
                 .append(this.price, other.getPrice()).isEquals();
 
         return ret;
-
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(this.id).append(this.brand).append(this.model).append(this.year)
-                .append(this.power).append(this.colourName).append(this.price).hashCode();
+                .append(this.power).append(this.colour).append(this.price).hashCode();
     }
 }

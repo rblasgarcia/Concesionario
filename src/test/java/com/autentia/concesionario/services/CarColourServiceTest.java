@@ -56,6 +56,6 @@ public class CarColourServiceTest {
 
     private List<String> createSampleCarColourNames() {
 
-        return Arrays.asList(createSampleCarColour().getColourName());
+        return Arrays.asList(createSampleCarColour().getColour());
     }
 }

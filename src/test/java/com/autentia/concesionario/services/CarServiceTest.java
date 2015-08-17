@@ -25,6 +25,15 @@ public class CarServiceTest {
     }
 
     @Test
+    public void shouldInsertACar() {
+        final Car sampleCar = createSampleCar();
+
+        carService.insert(sampleCar);
+
+        Mockito.verify(mockedCarMapper, Mockito.times(1)).insert(sampleCar);
+    }
+
+    @Test
     public void shouldReturnSingleCar() {
         final Car sampleCar = createSampleCar();
 

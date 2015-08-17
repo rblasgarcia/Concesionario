@@ -24,14 +24,20 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public void insert(Car car) {
+        LOG.info("Guardando coche en base de datos: {}", car.toString());
+        carMapper.insert(car);
+    }
+
+    @Override
     public Car get(int id) {
-        LOG.info("Getting Car with Id: {}", id);
+        LOG.info("Cargando coche con Id: {}", id);
         return carMapper.get(id);
     }
 
     @Override
     public List<Car> getAll() {
-        LOG.info("Getting all Cars");
+        LOG.info("Cargando lista de coches");
         return carMapper.getAll();
     }
 

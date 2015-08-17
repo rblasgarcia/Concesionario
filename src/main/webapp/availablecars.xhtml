@@ -11,6 +11,54 @@
 	<title>Coches disponibles</title>
 </h:head>
 <body>
-	<h1>HOLA GENTE!</h1>
+	<h:form id="carTableForm">
+		<p:dataTable var="car" value="#{carListController.carList}"
+			paginator="true" rows="10"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{carListController.selectedCar}" rowKey="#{car.id}"
+			widgetVar="colourFilter" emptyMessage="No hay datos para ese filtro"
+			filteredValue="#{carListController.filterByColourCarList}"
+			singleClickSelect="true" id="carTable">
+			
+			<p:ajax event="rowSelect" listener="#{carListController.onRowSelect}" />
+			
+			<p:column headerText="Marca" sortBy="#{car.brand}">
+				<h:outputText value="#{car.brand}" />
+				
+			</p:column>
+			<p:column headerText="Modelo" sortBy="#{car.model}">
+				<h:outputText value="#{car.model}" />
+			</p:column>
+			
+			<p:column headerText="Año" sortBy="#{car.year}" >
+				<h:outputText value="#{car.year}" style="float:right"/>
+			</p:column>
+			
+			<p:column headerText="Potencia (CV)" >
+				<h:outputText value="#{car.power}" style="float:right"/>
+			</p:column>
+
+			<p:column id="colourCol" filterBy="#{car.colour}"
+				filterMatchMode="exact" sortBy="#{car.colour}">
+				<f:facet name="filter">
+					<p:selectOneMenu onchange="PF('colourFilter').filter()">
+						<f:selectItem itemLabel="Color" itemValue="#{null}"
+							noSelectionOption="true" />
+						<f:selectItems value="#{carListController.colourNameList}" />
+					</p:selectOneMenu>
+				</f:facet>
+				<h:outputText value="#{car.colour}" />
+			</p:column>
+			
+			<p:column headerText="Precio (€)" sortBy="#{car.price}" >
+				<h:outputText value="#{car.price}" style="float:right"/>
+			</p:column>
+
+		</p:dataTable>
+		
+		<p:commandButton id="nuevo" value="Añadir Coche"
+				icon="ui-icon-pencil" action="newcar" />
+	</h:form>
 </body>
 </html>

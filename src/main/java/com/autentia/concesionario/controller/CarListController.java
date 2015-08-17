@@ -1,12 +1,15 @@
-package com.autentia.concesionario.dao.controller;
+package com.autentia.concesionario.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
+import org.primefaces.event.SelectEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,11 +38,11 @@ public class CarListController {
     private List<String> colourNameList = null;
 
     @PostConstruct
-    private void init() {
-        LOG.info("Inicializando vista...");
+    public void init() {
+        LOG.info("Inicializando listado de coches...");
         loadCarList();
         loadColourNames();
-        LOG.info("Vista inicializada.");
+        LOG.info("Listado inicializado.");
     }
 
     private void loadCarList() {
@@ -101,6 +104,27 @@ public class CarListController {
 
     public void setColourNameList(List<String> colourNameList) {
         this.colourNameList = colourNameList;
+    }
+
+    public void onRowSelect(SelectEvent event) {
+        putSelectedDataInContext(event);
+
+        LOG.info("Seleccionado coche: {}", selectedCar.toString());
+
+        goToDetailPage();
+    }
+
+    private void putSelectedDataInContext(SelectEvent event) {
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().put("selectedCar", event.getObject());
+    }
+
+    private void goToDetailPage() {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("cardetail.xhtml");
+            LOG.info("Vista de detalle cargada");
+        } catch (final IOException e) {
+            LOG.error("Fallo en navegación: {}", e);
+        }
     }
 
 }
