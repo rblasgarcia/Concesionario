@@ -21,7 +21,7 @@
 			filteredValue="#{carListController.filterByColourCarList}"
 			singleClickSelect="true" id="carTable">
 			
-			<p:ajax event="rowSelect" listener="#{carListController.onRowSelect}" />
+			<p:ajax event="rowSelect" listener="#{carListController.onRowSelect}" action=""/>
 			
 			<p:column headerText="Marca" sortBy="#{car.brand}">
 				<h:outputText value="#{car.brand}" />

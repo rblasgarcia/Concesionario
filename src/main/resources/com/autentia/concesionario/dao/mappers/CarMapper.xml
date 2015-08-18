@@ -24,4 +24,11 @@
 		select * from cars
 	</select>
 
+	<update id="updateCar" parameterType="com.autentia.concesionario.model.Car"
+		flushCache="true" statementType="PREPARED" timeout="20">
+		update Cars set
+		brand = #{brand}, model = #{model}, year = #{year}, power = #{power},
+		colour = #{colour}, price = #{price} where id = #{id}
+	</update>
+
 </mapper>
