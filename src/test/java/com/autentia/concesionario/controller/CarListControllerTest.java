@@ -12,7 +12,6 @@ import org.mockito.Mockito;
 import org.primefaces.event.SelectEvent;
 
 import com.autentia.concesionario.model.Car;
-import com.autentia.concesionario.services.CarColourService;
 import com.autentia.concesionario.services.CarService;
 
 public class CarListControllerTest {
@@ -47,15 +46,12 @@ public class CarListControllerTest {
 
     CarService mockedCarService = Mockito.mock(CarService.class);
 
-    CarColourService mockedCarColourService = Mockito.mock(CarColourService.class);
-
     @Before
     public void setup() {
         mockServiceMethods();
 
         carListController = new CarListControllerStub();
         carListController.setCarService(mockedCarService);
-        carListController.setCarColourService(mockedCarColourService);
     }
 
     @Test
@@ -63,9 +59,7 @@ public class CarListControllerTest {
         carListController.init();
 
         assertNotNull(carListController.getCarList());
-        assertNotNull(carListController.getColourNameList());
         Mockito.verify(mockedCarService, Mockito.times(1)).getAll();
-        Mockito.verify(mockedCarColourService, Mockito.times(1)).getAllCarColourNames();
     }
 
     @Test
@@ -81,7 +75,6 @@ public class CarListControllerTest {
 
     private void mockServiceMethods() {
         Mockito.when(mockedCarService.getAll()).thenReturn(new ArrayList<Car>());
-        Mockito.when(mockedCarColourService.getAllCarColourNames()).thenReturn(new ArrayList<String>());
     }
 
     private void assertOKOnRowSelected() {

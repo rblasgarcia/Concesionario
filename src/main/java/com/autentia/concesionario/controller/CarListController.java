@@ -14,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.autentia.concesionario.model.Car;
-import com.autentia.concesionario.services.CarColourService;
 import com.autentia.concesionario.services.CarService;
 
 @ManagedBean(name = "carListController")
@@ -26,22 +25,14 @@ public class CarListController {
     @ManagedProperty("#{carService}")
     private CarService carService;
 
-    @ManagedProperty("#{carColourService}")
-    private CarColourService carColourService;
-
     private List<Car> carList = null;
 
-    private List<Car> filterByColourCarList = null;
-
     private Car selectedCar = null;
-
-    private List<String> colourNameList = null;
 
     @PostConstruct
     public void init() {
         LOG.info("Inicializando listado de coches...");
         loadCarList();
-        loadColourNames();
         LOG.info("Listado inicializado.");
     }
 
@@ -49,13 +40,6 @@ public class CarListController {
         LOG.info("Cargando lista de coches...");
         carList = carService.getAll();
         LOG.info("Hecho.");
-    }
-
-    private void loadColourNames() {
-        LOG.info("Cargando lista de colores...");
-        colourNameList = carColourService.getAllCarColourNames();
-        LOG.info("Hecho.");
-
     }
 
     public CarService getCarService() {
@@ -66,14 +50,6 @@ public class CarListController {
         this.carService = carService;
     }
 
-    public CarColourService getCarColourService() {
-        return carColourService;
-    }
-
-    public void setCarColourService(CarColourService carColourService) {
-        this.carColourService = carColourService;
-    }
-
     public List<Car> getCarList() {
         return carList;
     }
@@ -82,28 +58,12 @@ public class CarListController {
         this.carList = carList;
     }
 
-    public List<Car> getFilterByColourCarList() {
-        return filterByColourCarList;
-    }
-
-    public void setFilterByColourCarList(List<Car> filterByColourCarList) {
-        this.filterByColourCarList = filterByColourCarList;
-    }
-
     public Car getSelectedCar() {
         return selectedCar;
     }
 
     public void setSelectedCar(Car selectedCar) {
         this.selectedCar = selectedCar;
-    }
-
-    public List<String> getColourNameList() {
-        return colourNameList;
-    }
-
-    public void setColourNameList(List<String> colourNameList) {
-        this.colourNameList = colourNameList;
     }
 
     public void onRowSelect(SelectEvent event) {

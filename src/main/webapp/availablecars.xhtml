@@ -17,11 +17,10 @@
 			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 			rowsPerPageTemplate="5,10,15" selectionMode="single"
 			selection="#{carListController.selectedCar}" rowKey="#{car.id}"
-			widgetVar="colourFilter" emptyMessage="No hay datos para ese filtro"
-			filteredValue="#{carListController.filterByColourCarList}"
+			emptyMessage="No hay datos actualmente"
 			singleClickSelect="true" id="carTable">
 			
-			<p:ajax event="rowSelect" listener="#{carListController.onRowSelect}" action=""/>
+			<p:ajax event="rowSelect" listener="#{carListController.onRowSelect}"/>
 			
 			<p:column headerText="Marca" sortBy="#{car.brand}">
 				<h:outputText value="#{car.brand}" />
@@ -39,15 +38,7 @@
 				<h:outputText value="#{car.power}" style="float:right"/>
 			</p:column>
 
-			<p:column id="colourCol" filterBy="#{car.colour}"
-				filterMatchMode="exact" sortBy="#{car.colour}">
-				<f:facet name="filter">
-					<p:selectOneMenu onchange="PF('colourFilter').filter()">
-						<f:selectItem itemLabel="Color" itemValue="#{null}"
-							noSelectionOption="true" />
-						<f:selectItems value="#{carListController.colourNameList}" />
-					</p:selectOneMenu>
-				</f:facet>
+			<p:column headerText="Color" sortBy="#{car.colour}">
 				<h:outputText value="#{car.colour}" />
 			</p:column>
 			
@@ -58,7 +49,7 @@
 		</p:dataTable>
 		
 		<p:commandButton id="nuevo" value="Añadir Coche"
-				icon="ui-icon-pencil" action="newcar" />
+				icon="ui-icon-pencil" action="newcar.xhtml" inmediate="true" ajax="false" />
 	</h:form>
 </body>
 </html>

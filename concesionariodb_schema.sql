@@ -10,6 +10,6 @@ CREATE TABLE cars (
     model character varying(20) NOT NULL,
     year integer  NOT NULL,
     power integer NOT NULL,
-    colour character varying(20) REFERENCES car_colours(colour),
+    colour character varying(20) NOT NULL,
     price numeric NOT NULL
 );
