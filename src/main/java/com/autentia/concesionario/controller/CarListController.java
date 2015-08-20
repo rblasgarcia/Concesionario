@@ -33,6 +33,7 @@ public class CarListController {
     public void init() {
         LOG.info("Inicializando listado de coches...");
         loadCarList();
+        selectedCar = new Car();
         LOG.info("Listado inicializado.");
     }
 

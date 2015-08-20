@@ -19,9 +19,6 @@ public class Car {
 
     private Double price;
 
-    public Car() {
-    };
-
     public int getId() {
         return id;
     }
