@@ -28,7 +28,7 @@ public class CarServiceIntegrationTest {
 
     @Test
     public void shouldInsertACar() {
-        final Car carToInsert = new Car("Nisu", "Puma", 2015, 250, "Azul", 45000);
+        final Car carToInsert = createSampleCar();
 
         final int previousSize = getNumberOfCars();
 
@@ -65,6 +65,17 @@ public class CarServiceIntegrationTest {
     private int getNumberOfCars() {
 
         return carService.getAll().size();
+    }
+
+    private Car createSampleCar() {
+        final Car car = new Car();
+        car.setBrand("Renault");
+        car.setModel("Clio");
+        car.setYear(2012);
+        car.setPower(100);
+        car.setColour("Amarillo");
+        car.setPrice(11300D);
+        return car;
     }
 
 }

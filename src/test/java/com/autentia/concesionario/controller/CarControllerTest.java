@@ -23,13 +23,24 @@ public class CarControllerTest {
 
     @Test
     public void shouldInsertANewCar() {
-        final Car carToInsert = new Car("Nisu", "Puma", 2015, 250, "Azul", 45000);
+        final Car carToInsert = createSampleCar();
         carController.insertCar();
         Mockito.verify(mockedCarService, Mockito.times(1)).insert(carToInsert);
     }
 
     private void prepareCarControllerValues() {
-        carController.setCar(new Car("Nisu", "Puma", 2015, 250, "Azul", 45000));
+        final Car car = createSampleCar();
+        carController.setCar(car);
     }
 
+    private Car createSampleCar() {
+        final Car car = new Car();
+        car.setBrand("Nisu");
+        car.setModel("Puma");
+        car.setYear(2015);
+        car.setPower(250);
+        car.setColour("Azul");
+        car.setPrice(45000D);
+        return car;
+    }
 }

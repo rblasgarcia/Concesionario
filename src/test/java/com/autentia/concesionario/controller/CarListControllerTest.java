@@ -69,7 +69,7 @@ public class CarListControllerTest {
 
     @Test
     public void shouldRedirectToDetailPageWithSelectedCar() {
-        carListController.setSelectedCar(new Car("Renault", "Clio", 2012, 100, "Amarillo", 11300));
+        carListController.setSelectedCar(createSampleCar());
         assertOKOnRowSelected();
     }
 
@@ -83,4 +83,14 @@ public class CarListControllerTest {
         assertTrue(carListController.isdataInContextPut());
     }
 
+    private Car createSampleCar() {
+        final Car car = new Car();
+        car.setBrand("Renault");
+        car.setModel("Clio");
+        car.setYear(2012);
+        car.setPower(100);
+        car.setColour("Amarillo");
+        car.setPrice(11300D);
+        return car;
+    }
 }

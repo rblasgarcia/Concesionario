@@ -59,12 +59,19 @@ public class CarServiceTest {
         Mockito.verify(mockedCarMapper, Mockito.times(1)).getAll();
     }
 
-    private Car createSampleCar() {
-        return new Car("Renault", "Clio", 2011, 100, "Rojo", 11300);
-    }
-
     private List<Car> createSampleCarList() {
 
         return Arrays.asList(createSampleCar());
+    }
+
+    private Car createSampleCar() {
+        final Car car = new Car();
+        car.setBrand("Renault");
+        car.setModel("Clio");
+        car.setYear(2012);
+        car.setPower(100);
+        car.setColour("Amarillo");
+        car.setPrice(11300D);
+        return car;
     }
 }

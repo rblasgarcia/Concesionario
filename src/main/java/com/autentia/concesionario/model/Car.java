@@ -22,15 +22,6 @@ public class Car {
     public Car() {
     };
 
-    public Car(String brand, String model, int year, int power, String colour, double price) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.power = power;
-        this.colour = colour;
-        this.price = price;
-    }
-
     public int getId() {
         return id;
     }
